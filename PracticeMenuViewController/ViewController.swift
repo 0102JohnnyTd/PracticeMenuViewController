@@ -8,12 +8,20 @@
 import UIKit
 import SafariServices
 
-class ViewController: UIViewController {
-    private let nib = "showFormCell"
+private enum CellIDManager {
+    static let showFormCellID = "ShowFormCellID"
+    static let showReviewPageCellID = "ShowReviewPageCellID"
+}
 
+private enum NibNameManager {
+    static let showFormNib = "showFormCell"
+    static let showReviewPageNib = "showReviewPage"
+}
+
+class ViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView! {
         didSet {
-            menuTableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: "CellID")
+            regiserCells()
         }
     }
 
@@ -21,6 +29,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         menuTableView.delegate = self
         menuTableView.dataSource = self
+    }
+
+    func regiserCells() {
+        menuTableView.register(UINib(nibName: NibNameManager.showFormNib, bundle: nil), forCellReuseIdentifier: CellIDManager.showFormCellID)
+        menuTableView.register(UINib(nibName: NibNameManager.showReviewPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.showReviewPageCellID)
     }
 
     func showReviewPage() {

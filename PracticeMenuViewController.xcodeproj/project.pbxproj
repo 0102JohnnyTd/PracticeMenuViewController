@@ -68,9 +68,9 @@
 			children = (
 				1CAB3CEA284F2A590029FEE8 /* AppDelegate.swift */,
 				1CAB3CEC284F2A590029FEE8 /* SceneDelegate.swift */,
-				1CAB3CEE284F2A590029FEE8 /* ViewController.swift */,
 				1CAB3D0B284F4FB30029FEE8 /* CellManager.swift */,
 				1CAB3CF0284F2A590029FEE8 /* Main.storyboard */,
+				1CAB3CEE284F2A590029FEE8 /* ViewController.swift */,
 				1CAB3CFF284F30F70029FEE8 /* showFormCell.xib */,
 				1CAB3D01284F336A0029FEE8 /* ShowFormCell.swift */,
 				1CAB3D07284F43340029FEE8 /* showReviewPageCell.xib */,
