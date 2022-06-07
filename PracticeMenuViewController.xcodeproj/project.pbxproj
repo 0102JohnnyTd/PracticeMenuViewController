@@ -13,6 +13,7 @@
 		1CAB3CF2284F2A590029FEE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CAB3CF0284F2A590029FEE8 /* Main.storyboard */; };
 		1CAB3CF4284F2A5B0029FEE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CAB3CF3284F2A5B0029FEE8 /* Assets.xcassets */; };
 		1CAB3CF7284F2A5B0029FEE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CAB3CF5284F2A5B0029FEE8 /* LaunchScreen.storyboard */; };
+		1CAB3D00284F30F70029FEE8 /* showFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CAB3CFF284F30F70029FEE8 /* showFormCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1CAB3CF3284F2A5B0029FEE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CAB3CF6284F2A5B0029FEE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CAB3CF8284F2A5B0029FEE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CAB3CFF284F30F70029FEE8 /* showFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = showFormCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				1CAB3CEC284F2A590029FEE8 /* SceneDelegate.swift */,
 				1CAB3CEE284F2A590029FEE8 /* ViewController.swift */,
 				1CAB3CF0284F2A590029FEE8 /* Main.storyboard */,
+				1CAB3CFF284F30F70029FEE8 /* showFormCell.xib */,
 				1CAB3CF3284F2A5B0029FEE8 /* Assets.xcassets */,
 				1CAB3CF5284F2A5B0029FEE8 /* LaunchScreen.storyboard */,
 				1CAB3CF8284F2A5B0029FEE8 /* Info.plist */,
@@ -128,6 +131,7 @@
 			files = (
 				1CAB3CF7284F2A5B0029FEE8 /* LaunchScreen.storyboard in Resources */,
 				1CAB3CF4284F2A5B0029FEE8 /* Assets.xcassets in Resources */,
+				1CAB3D00284F30F70029FEE8 /* showFormCell.xib in Resources */,
 				1CAB3CF2284F2A590029FEE8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
