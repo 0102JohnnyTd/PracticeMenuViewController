@@ -6,14 +6,38 @@
 //
 
 import UIKit
+import SafariServices
 
 class ViewController: UIViewController {
+    private let nib = "showFormCell"
+
+    @IBOutlet weak var menuTableView: UITableView! {
+        didSet {
+            menuTableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: "CellID")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        menuTableView.delegate = self
+        menuTableView.dataSource = self
     }
-
-
 }
 
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        menuTableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as! ShowFormCell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        menuTableView.deselectRow(at: indexPath, animated: true)
+        let url = "https://docs.google.com/forms/d/1xsQUm83KUc-mmiiLLbzR0Kq9S0jFrLWcy-DVSgJ0C-E/viewform?edit_requested=true"
+        let safariVC = SFSafariViewController(url: NSURL(string: url)! as URL)
+        
+        present(safariVC, animated: true, completion: nil)
+    }
+}
