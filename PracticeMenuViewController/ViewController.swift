@@ -58,9 +58,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
         switch cellType {
         case .showFormCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showFormCellID, for: indexPath) as! ShowFormCell
+            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! ShowFormCell
         case .showReviewPageCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showReviewPageCellID, for: indexPath) as! ShowReviewPageCell
+            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! ShowReviewPageCell
         }
 
         // ↓発見したもう一つの実装コード
