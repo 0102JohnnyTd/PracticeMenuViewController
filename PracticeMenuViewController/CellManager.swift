@@ -8,14 +8,14 @@
 import Foundation
 
 enum CellManager: Int, CaseIterable {
-    case ShowFormCell
-    case ShowReviewPageCell
+    case showFormCell
+    case showReviewPageCell
 
     var cellIndetifier: String {
         switch self {
-        case .ShowFormCell:
+        case .showFormCell:
             return "ShowFormCellID"
-        case .ShowReviewPageCell:
+        case .showReviewPageCell:
             return "ShowReviewPageCellID"
         }
     }
