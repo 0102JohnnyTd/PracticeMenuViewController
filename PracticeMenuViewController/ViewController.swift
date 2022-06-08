@@ -91,6 +91,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             showFormPage()
         case CellManager.reviewPageCell.rawValue:
             showReviewPage()
+        case CellManager.uiActivityVCCell.rawValue:
+            showUIActivityVC()
         default:
             break
         }
