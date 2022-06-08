@@ -9,13 +9,15 @@ import UIKit
 import SafariServices
 
 private enum CellIDManager {
-    static let showFormCellID = "ShowFormCellID"
-    static let showReviewPageCellID = "ShowReviewPageCellID"
+    static let formPageCellID = "FormPageCellID"
+    static let reviewPageCellID = "ReviewPageCellID"
+    static let uiActivityVCCellID = "UIActivityViewControllerCellID"
 }
 
 private enum NibNameManager {
-    static let showFormNib = "showFormCell"
-    static let showReviewPageNib = "showReviewPageCell"
+    static let formPageNib = "FormPageCell"
+    static let reviewPageNib = "ReviewPageCell"
+    static let uiActivityVCNib = "UIActivityViewControllerCell"
 }
 
 class ViewController: UIViewController {
@@ -32,8 +34,9 @@ class ViewController: UIViewController {
     }
 
     func regiserCells() {
-        menuTableView.register(UINib(nibName: NibNameManager.showFormNib, bundle: nil), forCellReuseIdentifier: CellIDManager.showFormCellID)
-        menuTableView.register(UINib(nibName: NibNameManager.showReviewPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.showReviewPageCellID)
+        menuTableView.register(UINib(nibName: NibNameManager.formPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.formPageCellID)
+        menuTableView.register(UINib(nibName: NibNameManager.reviewPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.reviewPageCellID)
+        menuTableView.register(UINib(nibName: NibNameManager.uiActivityVCNib, bundle: nil), forCellReuseIdentifier: CellIDManager.uiActivityVCCellID)
     }
 
     func showReviewPage() {
@@ -46,6 +49,11 @@ class ViewController: UIViewController {
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true, completion: nil)
     }
+
+    func showUIActivityVC() {
+        let activityVC = UIActivityViewController(activityItems: ["メッセージを入力してください"], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -57,10 +65,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cellType = CellManager(rawValue: indexPath.row)!
 
         switch cellType {
-        case .showFormCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showFormCellID, for: indexPath) as! ShowFormCell
-        case .showReviewPageCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showReviewPageCellID, for: indexPath) as! ShowReviewPageCell
+        case .formPageCell:
+            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! FormPageCell
+        case .reviewPageCell:
+            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! ReviewPageCell
+        case .uiActivityVCCell:
+            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! UIActivityViewControllerCell
         }
 
         // ↓発見したもう一つの実装コード
@@ -77,10 +87,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         menuTableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
-        case CellManager.showFormCell.rawValue:
+        case CellManager.formPageCell.rawValue:
             showFormPage()
-        case CellManager.showReviewPageCell.rawValue:
+        case CellManager.reviewPageCell.rawValue:
             showReviewPage()
+        case CellManager.uiActivityVCCell.rawValue:
+            showUIActivityVC()
         default:
             break
         }

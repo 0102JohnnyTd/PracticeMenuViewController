@@ -1,5 +1,5 @@
 //
-//  ShowReviewPageCell.swift
+//  ShowFormCell.swift
 //  PracticeMenuViewController
 //
 //  Created by Johnny Toda on 2022/06/07.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShowReviewPageCell: UITableViewCell {
+class FormPageCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,5 +19,4 @@ class ShowReviewPageCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

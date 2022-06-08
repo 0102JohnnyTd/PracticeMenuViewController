@@ -8,15 +8,18 @@
 import Foundation
 
 enum CellManager: Int, CaseIterable {
-    case showFormCell
-    case showReviewPageCell
+    case formPageCell
+    case reviewPageCell
+    case uiActivityVCCell
 
     var cellIndetifier: String {
         switch self {
-        case .showFormCell:
-            return "ShowFormCellID"
-        case .showReviewPageCell:
-            return "ShowReviewPageCellID"
+        case .formPageCell:
+            return "FormPageCellID"
+        case .reviewPageCell:
+            return "ReviewPageCellID"
+        case .uiActivityVCCell:
+            return "UIActivityViewControllerCellID"
         }
     }
 }
