@@ -76,5 +76,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         menuTableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+        case CellManager.showFormCell.rawValue:
+            showFormPage()
+        case CellManager.showReviewPageCell.rawValue:
+            showReviewPage()
+        default:
+            break
+        }
     }
 }
