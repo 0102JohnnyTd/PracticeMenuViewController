@@ -18,8 +18,8 @@
 		1CAB3D08284F43340029FEE8 /* ReviewPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CAB3D07284F43340029FEE8 /* ReviewPageCell.xib */; };
 		1CAB3D0A284F434B0029FEE8 /* ReviewPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3D09284F434B0029FEE8 /* ReviewPageCell.swift */; };
 		1CAB3D0C284F4FB30029FEE8 /* CellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3D0B284F4FB30029FEE8 /* CellManager.swift */; };
-		1CAB3D1228508E990029FEE8 /* UIActivityViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CAB3D1128508E990029FEE8 /* UIActivityViewControllerCell.xib */; };
 		1CAB3D1428508ED80029FEE8 /* UIActivityViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3D1328508ED80029FEE8 /* UIActivityViewControllerCell.swift */; };
+		1CAB3D16285094050029FEE8 /* UIActivityViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CAB3D15285094050029FEE8 /* UIActivityViewControllerCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,8 @@
 		1CAB3D07284F43340029FEE8 /* ReviewPageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewPageCell.xib; sourceTree = "<group>"; };
 		1CAB3D09284F434B0029FEE8 /* ReviewPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPageCell.swift; sourceTree = "<group>"; };
 		1CAB3D0B284F4FB30029FEE8 /* CellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellManager.swift; sourceTree = "<group>"; };
-		1CAB3D1128508E990029FEE8 /* UIActivityViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIActivityViewControllerCell.xib; sourceTree = "<group>"; };
 		1CAB3D1328508ED80029FEE8 /* UIActivityViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityViewControllerCell.swift; sourceTree = "<group>"; };
+		1CAB3D15285094050029FEE8 /* UIActivityViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIActivityViewControllerCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +76,8 @@
 				1CAB3CF0284F2A590029FEE8 /* Main.storyboard */,
 				1CAB3CEE284F2A590029FEE8 /* ViewController.swift */,
 				1CAB3CFF284F30F70029FEE8 /* FormPageCell.xib */,
-				1CAB3D1128508E990029FEE8 /* UIActivityViewControllerCell.xib */,
 				1CAB3D1328508ED80029FEE8 /* UIActivityViewControllerCell.swift */,
+				1CAB3D15285094050029FEE8 /* UIActivityViewControllerCell.xib */,
 				1CAB3D01284F336A0029FEE8 /* FormPageCell.swift */,
 				1CAB3D07284F43340029FEE8 /* ReviewPageCell.xib */,
 				1CAB3D09284F434B0029FEE8 /* ReviewPageCell.swift */,
@@ -148,8 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CAB3CF7284F2A5B0029FEE8 /* LaunchScreen.storyboard in Resources */,
-				1CAB3D1228508E990029FEE8 /* UIActivityViewControllerCell.xib in Resources */,
 				1CAB3CF4284F2A5B0029FEE8 /* Assets.xcassets in Resources */,
+				1CAB3D16285094050029FEE8 /* UIActivityViewControllerCell.xib in Resources */,
 				1CAB3D00284F30F70029FEE8 /* FormPageCell.xib in Resources */,
 				1CAB3CF2284F2A590029FEE8 /* Main.storyboard in Resources */,
 				1CAB3D08284F43340029FEE8 /* ReviewPageCell.xib in Resources */,

@@ -8,7 +8,6 @@
 import UIKit
 
 class ReviewPageCell: UITableViewCell {
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +18,4 @@ class ReviewPageCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

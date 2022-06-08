@@ -9,13 +9,15 @@ import UIKit
 import SafariServices
 
 private enum CellIDManager {
-    static let showFormCellID = "FormPageCellID"
-    static let showReviewPageCellID = "ReviewPageCellID"
+    static let formPageCellID = "FormPageCellID"
+    static let reviewPageCellID = "ReviewPageCellID"
+    static let uiActivityVCCellID = "UIActivityViewControllerCellID"
 }
 
 private enum NibNameManager {
-    static let showFormNib = "FormPageCell"
-    static let showReviewPageNib = "ReviewPageCell"
+    static let formPageNib = "FormPageCell"
+    static let reviewPageNib = "ReviewPageCell"
+    static let uiActivityVCNib = "UIActivityViewControllerCell"
 }
 
 class ViewController: UIViewController {
@@ -32,8 +34,9 @@ class ViewController: UIViewController {
     }
 
     func regiserCells() {
-        menuTableView.register(UINib(nibName: NibNameManager.showFormNib, bundle: nil), forCellReuseIdentifier: CellIDManager.showFormCellID)
-        menuTableView.register(UINib(nibName: NibNameManager.showReviewPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.showReviewPageCellID)
+        menuTableView.register(UINib(nibName: NibNameManager.formPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.formPageCellID)
+        menuTableView.register(UINib(nibName: NibNameManager.reviewPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.reviewPageCellID)
+        menuTableView.register(UINib(nibName: NibNameManager.uiActivityVCNib, bundle: nil), forCellReuseIdentifier: CellIDManager.uiActivityVCCellID)
     }
 
     func showReviewPage() {
@@ -61,6 +64,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! FormPageCell
         case .reviewPageCell:
             return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! ReviewPageCell
+        case .uiActivityVCCell:
+            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! UIActivityViewControllerCell
         }
 
         // ↓発見したもう一つの実装コード
