@@ -9,13 +9,13 @@ import UIKit
 import SafariServices
 
 private enum CellIDManager {
-    static let showFormCellID = "ShowFormCellID"
-    static let showReviewPageCellID = "ShowReviewPageCellID"
+    static let showFormCellID = "FormPageCellID"
+    static let showReviewPageCellID = "ReviewPageCellID"
 }
 
 private enum NibNameManager {
-    static let showFormNib = "showFormCell"
-    static let showReviewPageNib = "showReviewPageCell"
+    static let showFormNib = "FormPageCell"
+    static let showReviewPageNib = "ReviewPageCell"
 }
 
 class ViewController: UIViewController {
@@ -57,10 +57,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cellType = CellManager(rawValue: indexPath.row)!
 
         switch cellType {
-        case .showFormCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! ShowFormCell
-        case .showReviewPageCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! ShowReviewPageCell
+        case .formPageCell:
+            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! FormPageCell
+        case .reviewPageCell:
+            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! ReviewPageCell
         }
 
         // ↓発見したもう一つの実装コード
@@ -77,9 +77,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         menuTableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
-        case CellManager.showFormCell.rawValue:
+        case CellManager.formPageCell.rawValue:
             showFormPage()
-        case CellManager.showReviewPageCell.rawValue:
+        case CellManager.reviewPageCell.rawValue:
             showReviewPage()
         default:
             break
