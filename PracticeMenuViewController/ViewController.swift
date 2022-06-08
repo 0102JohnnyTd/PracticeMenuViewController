@@ -62,6 +62,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         case .showReviewPageCell:
             return menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showReviewPageCellID, for: indexPath) as! ShowReviewPageCell
         }
+
+        // ↓発見したもう一つの実装コード
+        // enumの方が保守性と可読性が高くdidSelectRowAtでも使用できるのでメリットが多いと判断した
+//        let showFromCell = menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showFormCellID, for: indexPath) as! ShowFormCell
+//
+//        let showReviewPageCell = menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showReviewPageCellID, for: indexPath) as! ShowReviewPageCell
+//
+//        let cellArray = [showFromCell, showReviewPageCell]
+//
+//        return cellArray[indexPath.row]
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
