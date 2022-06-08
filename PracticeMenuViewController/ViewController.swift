@@ -49,6 +49,11 @@ class ViewController: UIViewController {
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true, completion: nil)
     }
+
+    func showUIActivityVC() {
+        let activityVC = UIActivityViewController(activityItems: ["メッセージを入力してください"], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
