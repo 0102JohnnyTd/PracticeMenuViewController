@@ -15,7 +15,7 @@ private enum CellIDManager {
 
 private enum NibNameManager {
     static let showFormNib = "showFormCell"
-    static let showReviewPageNib = "showReviewPage"
+    static let showReviewPageNib = "showReviewPageCell"
 }
 
 class ViewController: UIViewController {
@@ -44,15 +44,23 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        CellManager.allCases.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        menuTableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as! ShowFormCell
+        let cellType = CellManager(rawValue: indexPath.row)!
+
+        switch cellType {
+        case .showFormCell:
+            return menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showFormCellID, for: indexPath) as! ShowFormCell
+        case .showReviewPageCell:
+            return menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showReviewPageCellID, for: indexPath) as! ShowReviewPageCell
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         menuTableView.deselectRow(at: indexPath, animated: true)
+        
         let url = "https://docs.google.com/forms/d/1xsQUm83KUc-mmiiLLbzR0Kq9S0jFrLWcy-DVSgJ0C-E/viewform?edit_requested=true"
         let safariVC = SFSafariViewController(url: NSURL(string: url)! as URL)
         present(safariVC, animated: true, completion: nil)
