@@ -27,6 +27,8 @@ class ViewController: UIViewController {
         }
     }
 
+    private var cellNumber = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         menuTableView.delegate = self
@@ -57,12 +59,29 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return SectionManager.allCases.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        CellManager.allCases.count
+        let sectionType = SectionManager(rawValue: section)
+
+        switch sectionType {
+        case .suportSection:
+            return 1
+        case .assesmentSection:
+            return 2
+        case .generalSection:
+            return 0
+        case .none:
+            return 0
+        }
+//        CellManager.allCases.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = CellManager(rawValue: indexPath.row)!
+        let cellType = CellManager(rawValue: cellNumber)!
+        cellNumber += 1
 
         switch cellType {
         case .formPageCell:
