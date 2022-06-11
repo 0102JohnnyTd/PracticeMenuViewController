@@ -9,7 +9,18 @@ import Foundation
 
 
 enum SectionManager: Int, CaseIterable {
-    case suportSection
+    case supportSection
     case assesmentSection
     case generalSection
+
+    var sectionTitle: String {
+        switch self {
+        case .supportSection:
+            return "Support"
+        case .assesmentSection:
+            return "Assesment"
+        case .generalSection:
+            return "General"
+        }
+    }
 }

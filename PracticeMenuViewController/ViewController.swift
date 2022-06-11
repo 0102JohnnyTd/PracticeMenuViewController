@@ -41,6 +41,37 @@ class ViewController: UIViewController {
         menuTableView.register(UINib(nibName: NibNameManager.uiActivityVCNib, bundle: nil), forCellReuseIdentifier: CellIDManager.uiActivityVCCellID)
     }
 
+    func setUpCustomSection(section: Int) -> UIView {
+        let headerView = UIView()
+        headerView.backgroundColor = .systemGray6
+        headerView.frame = CGRect(x: 0, y: 0, width: menuTableView.frame.width, height: menuTableView.frame.width * 1/2)
+
+        let titleLabel = UILabel()
+
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20).isActive = true
+        titleLabel.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        titleLabel.sizeToFit()
+
+//        コンパクトな書き方
+//        titleLabel.text = headerTitle[section]
+        let sectionType = SectionManager(rawValue: section)
+        switch sectionType {
+        case .supportSection:
+            titleLabel.text = sectionType?.sectionTitle
+        case .assesmentSection:
+            titleLabel.text = sectionType?.sectionTitle
+        case .generalSection:
+            titleLabel.text = sectionType?.sectionTitle
+        case .none:
+            break
+        }
+
+        headerView.addSubview(titleLabel)
+        return headerView
+    }
+
     func showReviewPage() {
         let url = URL(string: "https://apps.apple.com/jp/app/apple-store/id375380948?mt=8&action=write-review")!
         UIApplication.shared.open(url)
@@ -63,11 +94,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return SectionManager.allCases.count
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        setUpCustomSection(section: section)
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionType = SectionManager(rawValue: section)
 
         switch sectionType {
-        case .suportSection:
+        case .supportSection:
             return 1
         case .assesmentSection:
             return 2
