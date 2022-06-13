@@ -23,6 +23,7 @@ private enum NibNameManager {
 class ViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView! {
         didSet {
+            menuTableView.sectionFooterHeight = 0
             regiserCells()
         }
     }
