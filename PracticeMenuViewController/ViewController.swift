@@ -44,13 +44,13 @@ class ViewController: UIViewController {
     func setUpCustomSection(section: Int) -> UIView {
         let headerView = UIView()
         headerView.backgroundColor = .systemGray6
-        headerView.frame = CGRect(x: 0, y: 0, width: menuTableView.frame.width, height: menuTableView.frame.width * 1/2)
 
         let titleLabel = UILabel()
+        headerView.addSubview(titleLabel)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16).isActive = true
         titleLabel.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         titleLabel.sizeToFit()
 
@@ -68,7 +68,6 @@ class ViewController: UIViewController {
             break
         }
 
-        headerView.addSubview(titleLabel)
         return headerView
     }
 
@@ -100,7 +99,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionType = SectionManager(rawValue: section)
-
         switch sectionType {
         case .supportSection:
             return 1
