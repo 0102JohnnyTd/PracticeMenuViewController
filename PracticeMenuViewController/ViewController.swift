@@ -8,17 +8,7 @@
 import UIKit
 import SafariServices
 
-private enum CellIDManager {
-    static let formPageCellID = "FormPageCellID"
-    static let reviewPageCellID = "ReviewPageCellID"
-    static let uiActivityVCCellID = "UIActivityViewControllerCellID"
-}
 
-private enum NibNameManager {
-    static let formPageNib = "FormPageCell"
-    static let reviewPageNib = "ReviewPageCell"
-    static let uiActivityVCNib = "UIActivityViewControllerCell"
-}
 
 class ViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView! {
@@ -28,7 +18,11 @@ class ViewController: UIViewController {
         }
     }
 
-    private var cellNumber = 0
+    private let nib = "OptionCell"
+    private let cellIdentifier = "CellID"
+    private let sectionArray = ["Support", "Assesment", "General"]
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +31,15 @@ class ViewController: UIViewController {
     }
 
     func regiserCells() {
-        menuTableView.register(UINib(nibName: NibNameManager.formPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.formPageCellID)
-        menuTableView.register(UINib(nibName: NibNameManager.reviewPageNib, bundle: nil), forCellReuseIdentifier: CellIDManager.reviewPageCellID)
-        menuTableView.register(UINib(nibName: NibNameManager.uiActivityVCNib, bundle: nil), forCellReuseIdentifier: CellIDManager.uiActivityVCCellID)
+        menuTableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
 
     func setUpCustomSection(section: Int) -> UIView {
         let headerView = UIView()
-        headerView.backgroundColor = .systemGray6
+        headerView.backgroundColor = .gray
 
         let titleLabel = UILabel()
+        titleLabel.textColor = .white
         headerView.addSubview(titleLabel)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -55,20 +48,7 @@ class ViewController: UIViewController {
         titleLabel.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         titleLabel.sizeToFit()
 
-//        コンパクトな書き方
-//        titleLabel.text = headerTitle[section]
-        let sectionType = SectionManager(rawValue: section)
-        switch sectionType {
-        case .supportSection:
-            titleLabel.text = sectionType?.sectionTitle
-        case .assesmentSection:
-            titleLabel.text = sectionType?.sectionTitle
-        case .generalSection:
-            titleLabel.text = sectionType?.sectionTitle
-        case .none:
-            break
-        }
-
+        titleLabel.text = sectionArray[section]
         return headerView
     }
 
@@ -110,31 +90,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         case .none:
             return 0
         }
-//        CellManager.allCases.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = CellManager(rawValue: cellNumber)!
-        cellNumber += 1
+        let cell = menuTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! OptionCell
 
-        switch cellType {
-        case .formPageCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! FormPageCell
-        case .reviewPageCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! ReviewPageCell
-        case .uiActivityVCCell:
-            return menuTableView.dequeueReusableCell(withIdentifier: cellType.cellIndetifier, for: indexPath) as! UIActivityViewControllerCell
-        }
+        cell.configure(row: indexPath.row)
 
-        // ↓発見したもう一つの実装コード
-        // enumの方が保守性と可読性が高くdidSelectRowAtでも使用できるのでメリットが多いと判断した
-//        let showFromCell = menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showFormCellID, for: indexPath) as! ShowFormCell
-//
-//        let showReviewPageCell = menuTableView.dequeueReusableCell(withIdentifier: CellIDManager.showReviewPageCellID, for: indexPath) as! ShowReviewPageCell
-//
-//        let cellArray = [showFromCell, showReviewPageCell]
-//
-//        return cellArray[indexPath.row]
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
