@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum CellManager: Int, CaseIterable {
-    case formPageCell
-    case reviewPageCell
-    case uiActivityVCCell
-}
-
 enum SupportSectionCell: Int, CaseIterable {
    case formPageCell
 }
