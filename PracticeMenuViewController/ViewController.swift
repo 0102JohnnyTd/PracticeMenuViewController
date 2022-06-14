@@ -21,8 +21,8 @@ class ViewController: UIViewController {
     private let nib = "OptionCell"
     private let cellIdentifier = "CellID"
     private let sectionArray = ["Support", "Assesment", "General"]
-    private let supportTitleArray = ["お問い合わせ"]
-    private let assesmentTitleArray = ["アプリを評価する", "アプリを友達に教える"]
+    private let supportSectionCellTitle = ["お問い合わせ"]
+    private let assesmentSectionCellTitle = ["アプリを評価する", "アプリを友達に教える"]
 
 
     override func viewDidLoad() {
@@ -99,10 +99,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let sectionType = SectionManager(rawValue: indexPath.section)
         switch sectionType {
         case .supportSection:
-            cell.configure(row: indexPath.row, titleArray: supportTitleArray)
+            cell.configure(row: indexPath.row, titleArray: supportSectionCellTitle)
 
         case .assesmentSection:
-            cell.configure(row: indexPath.row, titleArray: assesmentTitleArray)
+            cell.configure(row: indexPath.row, titleArray: assesmentSectionCellTitle)
 
         case .generalSection:
             break
@@ -118,14 +118,36 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         menuTableView.deselectRow(at: indexPath, animated: true)
 
-        switch indexPath.row {
-        case CellManager.formPageCell.rawValue:
-            showFormPage()
-        case CellManager.reviewPageCell.rawValue:
-            showReviewPage()
-        case CellManager.uiActivityVCCell.rawValue:
-            showUIActivityVC()
-        default:
+        let sectionType = SectionManager(rawValue: indexPath.section)
+
+        switch sectionType {
+
+        case .supportSection:
+            let supportSectionCell = SupportSectionCell(rawValue: indexPath.row)
+
+            switch supportSectionCell {
+            case .formPageCell:
+                showFormPage()
+            case .none:
+                break
+            }
+
+        case .assesmentSection:
+            let assesmentSectionCell = AssesmentSectionCell(rawValue: indexPath.row)
+
+            switch  assesmentSectionCell {
+            case .reviewPageCell:
+                showReviewPage()
+            case .uiActivityVCCell:
+                showUIActivityVC()
+            case .none:
+                break
+            }
+
+        case .generalSection:
+            break
+
+        case .none:
             break
         }
     }

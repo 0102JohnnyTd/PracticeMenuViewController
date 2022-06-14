@@ -11,15 +11,13 @@ enum CellManager: Int, CaseIterable {
     case formPageCell
     case reviewPageCell
     case uiActivityVCCell
+}
 
-    var cellIndetifier: String {
-        switch self {
-        case .formPageCell:
-            return "FormPageCellID"
-        case .reviewPageCell:
-            return "ReviewPageCellID"
-        case .uiActivityVCCell:
-            return "UIActivityViewControllerCellID"
-        }
-    }
+enum SupportSectionCell: Int, CaseIterable {
+   case formPageCell
+}
+
+enum AssesmentSectionCell: Int, CaseIterable {
+   case reviewPageCell
+   case uiActivityVCCell
 }
