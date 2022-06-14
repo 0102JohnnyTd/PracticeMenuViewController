@@ -7,7 +7,9 @@
 
 import UIKit
 
-class FormPageCell: UITableViewCell {
+class OptionCell: UITableViewCell {
+
+    @IBOutlet weak var titleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,5 +20,10 @@ class FormPageCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+
+    func configure(row: Int, titleArray: [String]) {
+        titleLabel.text = titleArray[row]
     }
 }
