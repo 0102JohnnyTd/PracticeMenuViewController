@@ -13,8 +13,8 @@ private enum URLManager {
     static let reviewPageURL = "https://apps.apple.com/jp/app/apple-store/id375380948?mt=8&action=write-review"
 }
 
-class ViewController: UIViewController {
-    @IBOutlet weak var menuTableView: UITableView! {
+final class ViewController: UIViewController {
+    @IBOutlet private weak var menuTableView: UITableView! {
         didSet {
             menuTableView.sectionFooterHeight = 0
             regiserCells()
@@ -34,11 +34,11 @@ class ViewController: UIViewController {
         menuTableView.dataSource = self
     }
 
-    func regiserCells() {
+    private func regiserCells() {
         menuTableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
 
-    func setUpCustomSection(section: Int) -> UIView {
+    private func setUpCustomSection(section: Int) -> UIView {
         let headerView = UIView()
         headerView.backgroundColor = .gray
 
@@ -56,18 +56,18 @@ class ViewController: UIViewController {
         return headerView
     }
 
-    func showFormPage() {
+    private func showFormPage() {
         let url = URL(string: URLManager.formPageURL)!
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true, completion: nil)
     }
 
-    func showReviewPage() {
+    private func showReviewPage() {
         let url = URL(string: URLManager.reviewPageURL)!
         UIApplication.shared.open(url)
     }
 
-    func showUIActivityVC() {
+    private func showUIActivityVC() {
         let activityVC = UIActivityViewController(activityItems: ["メッセージを入力してください"], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
     }

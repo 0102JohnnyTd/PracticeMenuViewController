@@ -7,8 +7,8 @@
 
 import UIKit
 
-class OptionCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
+final class OptionCell: UITableViewCell {
+    @IBOutlet private weak var titleLabel: UILabel!
 
     func configure(row: Int, titleArray: [String]) {
         titleLabel.text = titleArray[row]
