@@ -8,7 +8,10 @@
 import UIKit
 import SafariServices
 
-
+private enum URLManager {
+    static let formPageURL = "https://docs.google.com/forms/d/1xsQUm83KUc-mmiiLLbzR0Kq9S0jFrLWcy-DVSgJ0C-E/viewform"
+    static let reviewPageURL = "https://apps.apple.com/jp/app/apple-store/id375380948?mt=8&action=write-review"
+}
 
 class ViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView! {
@@ -53,15 +56,15 @@ class ViewController: UIViewController {
         return headerView
     }
 
-    func showReviewPage() {
-        let url = URL(string: "https://apps.apple.com/jp/app/apple-store/id375380948?mt=8&action=write-review")!
-        UIApplication.shared.open(url)
-    }
-
     func showFormPage() {
-        let url = URL(string: "https://docs.google.com/forms/d/1xsQUm83KUc-mmiiLLbzR0Kq9S0jFrLWcy-DVSgJ0C-E/viewform?edit_requested=true")!
+        let url = URL(string: URLManager.formPageURL)!
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true, completion: nil)
+    }
+
+    func showReviewPage() {
+        let url = URL(string: URLManager.reviewPageURL)!
+        UIApplication.shared.open(url)
     }
 
     func showUIActivityVC() {
@@ -121,7 +124,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let sectionType = SectionManager(rawValue: indexPath.section)
 
         switch sectionType {
-
         case .supportSection:
             let supportSectionCell = SupportSectionCell(rawValue: indexPath.row)
 
