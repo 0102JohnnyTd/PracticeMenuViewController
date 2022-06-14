@@ -83,9 +83,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let sectionType = SectionManager(rawValue: section)
         switch sectionType {
         case .supportSection:
-            return 1
+            return SupportSectionCell.allCases.count
         case .assesmentSection:
-            return 2
+            return AssesmentSectionCell.allCases.count
         case .generalSection:
             return 0
         case .none:
