@@ -11,7 +11,6 @@ class OptionCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
 
-    private let titleArray = ["お問い合わせ", "アプリを評価する", "アプリを友達に教える"]
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +22,8 @@ class OptionCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configure(row: Int) {
+
+    func configure(row: Int, titleArray: [String]) {
         titleLabel.text = titleArray[row]
     }
 }

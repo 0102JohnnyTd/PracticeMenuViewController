@@ -21,7 +21,8 @@ class ViewController: UIViewController {
     private let nib = "OptionCell"
     private let cellIdentifier = "CellID"
     private let sectionArray = ["Support", "Assesment", "General"]
-
+    private let supportTitleArray = ["お問い合わせ"]
+    private let assesmentTitleArray = ["アプリを評価する", "アプリを友達に教える"]
 
 
     override func viewDidLoad() {
@@ -95,13 +96,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = menuTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! OptionCell
 
-        cell.configure(row: indexPath.row)
+        let sectionType = SectionManager(rawValue: indexPath.section)
+        switch sectionType {
+        case .supportSection:
+            cell.configure(row: indexPath.row, titleArray: supportTitleArray)
+
+        case .assesmentSection:
+            cell.configure(row: indexPath.row, titleArray: assesmentTitleArray)
+
+        case .generalSection:
+            break
+
+        case .none:
+            break
+        }
 
         return cell
     }
 
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         menuTableView.deselectRow(at: indexPath, animated: true)
+
         switch indexPath.row {
         case CellManager.formPageCell.rawValue:
             showFormPage()
